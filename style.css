@@ -5,6 +5,20 @@ body{
     row-gap: 10px;
 }
 
+button{
+    font-weight: bold;
+    font-size: 1em;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #302939;
+    color: #ffffff;
+    transition: 0.04s ease-out;
+}
+button:hover{
+    background-color: #e99b9b;
+    color: #212121;
+}
 
 .container{
     background-color: #5c5b5b;
@@ -13,6 +27,5 @@ body{
 }
 
 .box {
-    /* border: 1px solid black; */
     aspect-ratio: 1/1;
 }
