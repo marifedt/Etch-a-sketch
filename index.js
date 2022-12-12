@@ -1,8 +1,10 @@
 const container = document.querySelector('.container');
 
-function createBoxes(){
-    for (let i = 0; i < 16; i++) {
-        for (let j = 0; j < 16; j++) {
+function createBoxes(grid){
+    container.style.gridTemplateColumns = `repeat(${grid}, auto)`;
+
+    for (let i = 0; i < grid; i++) {
+        for (let j = 0; j < grid; j++) {
             const square = document.createElement('div');
             square.classList.add('box');
             container.append(square);
@@ -10,21 +12,19 @@ function createBoxes(){
     }
 
     const boxes = document.querySelectorAll('.box');
-    boxes.forEach(box => box.addEventListener('mouseenter', changeColor));
-    boxes.forEach(box => box.addEventListener('mouseleave', changeColor));
+    boxes.forEach(box => box.addEventListener('mouseenter', changeGridColor));
 }
 
-function changeColor(e){
-    this.style.transition = `0.6s ease`;
+function changeGridColor(e){
+    this.style.transition = `0.2s ease`;
     if(e.type === 'mouseenter'){
-        let randomColor = Math.floor(Math.random()*16777215).toString(16);
+        let maxColorVal = 0xFFFFFF;
+        let randomColor = Math.floor(Math.random()* maxColorVal).toString(16);
         this.style.backgroundColor = "#" + randomColor;
-    } else if(e.type === 'mouseleave'){
-        this.style.backgroundColor = '#FFFFFF';
     }
 }
 
-window.addEventListener('load', createBoxes);
+window.addEventListener('load', createBoxes(64));
 
 
 
