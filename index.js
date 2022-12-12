@@ -1,4 +1,5 @@
 const container = document.querySelector('.container');
+const btnChangeGrid = document.querySelector('button');
 
 function createBoxes(grid){
     container.style.gridTemplateColumns = `repeat(${grid}, auto)`;
@@ -15,6 +16,18 @@ function createBoxes(grid){
     boxes.forEach(box => box.addEventListener('mouseenter', changeGridColor));
 }
 
+function changeGrid(){
+    let grid = prompt('Number of grids (Min:2 | Max:100)?');
+    if(Number.isInteger(parseInt(grid))){
+        if(!(grid < 2 || grid > 100)){
+            while (container.hasChildNodes()) {
+                container.removeChild(container.firstChild);
+        }
+        createBoxes(grid);
+        }  
+    }
+}
+
 function changeGridColor(e){
     this.style.transition = `0.2s ease`;
     if(e.type === 'mouseenter'){
@@ -24,6 +37,7 @@ function changeGridColor(e){
     }
 }
 
+btnChangeGrid.addEventListener('click', changeGrid);
 window.addEventListener('load', createBoxes(64));
 
 
