@@ -2,13 +2,13 @@ body{
     display:flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 20px;
+    row-gap: 10px;
 }
 
 
 .container{
     background-color: #5c5b5b;
-    width: 70%;
+    width: 960px;
     display: grid;
 }
 
