@@ -1,4 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+/* font-family: 'Pacifico', cursive; 
+    font-family: 'Montserrat', sans-serif;*/
+    
+
 body{
+    background-color: #ef6c35;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -6,23 +14,10 @@ body{
     min-height: 100vh;
 }
 
-button{
-    flex: 0 1 auto;
-    font-weight: bold;
-    font-size: 1em;
-    border: 2px solid;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: #302939;
-    color: #ffffff;
-    transition: 0.04s ease-out;
-}
-button:hover{
-    background-color: #e99b9b;
-    color: #212121;
-}
 
 .wrapper{
+   border: 5px solid #161C2E;
+   box-shadow: 4px 6px 4px 0 rgba(0, 0, 0, 0.25);
    width: 70vw;
    height: 70vw;
    max-width: 700px;
@@ -32,7 +27,7 @@ button:hover{
     display: grid;
     width: 100%;
     height: 100%;
-    background-color: #5c5b5b;
+    background-color: #D9D9D9;
 }
 
 .box {
