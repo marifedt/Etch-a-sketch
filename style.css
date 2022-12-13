@@ -6,14 +6,28 @@
     
 
 body{
-    background-color: #ef6c35;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 10px;
+    width: 100%;
     min-height: 100vh;
+    background-color: #ef6c35;    
+    font-size: 16px;
 }
 
+main{
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "canvas", "header";
+    align-items: start;
+    justify-items: center;
+}
+
+.main-canvas-wrapper{
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .frame-container {
    border: 5px solid #161C2E;
