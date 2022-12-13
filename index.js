@@ -1,5 +1,12 @@
 const container = document.querySelector(".container");
 const btnChangeGrid = document.querySelector("button");
+const slideEraser = document.querySelector('#slideErase');
+let numOfGrids = 16;
+
+slideEraser.addEventListener('input', function() {
+  const value = this.value;
+  this.style.background = `linear-gradient(to right, #161C2E 0%, #161C2E ${value}%, #fff ${value}%, white 100%)`
+});
 
 function randomNumber(max) {
   return Math.floor(Math.random() * (max + 1));
@@ -14,8 +21,8 @@ function randomRGBColor() {
 }
 
 function createBoxes(grid) {
+  numOfGrids = grid;
   container.style.gridTemplateColumns = `repeat(${grid}, auto)`;
-
   for (let i = 0; i < grid; i++) {
     for (let j = 0; j < grid; j++) {
       const square = document.createElement("div");
@@ -49,4 +56,4 @@ function changeGridColor(e) {
 }
 
 btnChangeGrid.addEventListener("click", changeGrid);
-window.addEventListener("load", createBoxes(64));
+window.addEventListener("load", createBoxes(16));
