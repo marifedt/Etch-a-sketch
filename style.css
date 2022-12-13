@@ -10,9 +10,13 @@ body{
     min-height: 100vh;
     background-color: #ef6c35;    
     font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 main{
+    width: 70%;
     margin: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -45,6 +49,18 @@ main{
     border-radius: 50%;
     cursor: ew-resize;
     background: #2BB3C0;
+}
+
+.header-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-wrapper h1{
+    font-family: 'Pacifico', cursive;
+    font-size: 5em;
+    margin-bottom: 1.5em;
 }
 
 .frame-container {
