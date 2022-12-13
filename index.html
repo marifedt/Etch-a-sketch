@@ -9,10 +9,23 @@
     <title>Etch-a-sketch | The Odin Project</title>
 </head>
 <body>
-    <button>Customize Grid</button>
-    <div class="wrapper">
-        <div class="container"></div>
-    </div>
-    
+    <main>
+        <div class="main-canvas-wrapper">
+            <div class="frame-container">
+                <div class="container"></div>
+            </div>
+            <input type="range" value="0" min="0" max="10" step="2" id="slideErase">
+        </div>
+        
+        <div class="header-wrapper">
+            <h1>Etch-a-sketch</h1>
+            <div class="btn-container">
+                <button>Change Size</button>
+                <button>Pick a color <input type="color"></button>
+                <button>Random</button>
+                <button>Eraser</button>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
