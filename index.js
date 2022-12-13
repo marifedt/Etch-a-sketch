@@ -36,9 +36,9 @@ function createBoxes(grid) {
 }
 
 function changeGrid() {
-  let grid = prompt("Number of grids (Min:2 | Max:100)?");
+  let grid = prompt("Number of grids (Min: 3 | Max: 100)?");
   if (Number.isInteger(parseInt(grid))) {
-    if (!(grid < 2 || grid > 100)) {
+    if (!(grid < 3 || grid > 100)) {
       while (container.hasChildNodes()) {
         container.removeChild(container.firstChild);
       }
