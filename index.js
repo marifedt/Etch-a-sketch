@@ -4,10 +4,12 @@ const btnChangeGrid = document.querySelector("#sizeChange");
 const btnRandom = document.querySelector("#btnRandom");
 const btnBlack = document.querySelector("#btnBlack");
 const colorPick = document.querySelector(".cp-container");
+const btnErase = document.querySelector("#btnErase");
 
 let numOfGrids = 16;
 let mouseDown = false;
 let mode = "random";
+let eraseMode = false;
 let isActive = (element) => {
   return element.classList.contains("active");
 };
@@ -56,18 +58,22 @@ function changeGridColor(e) {
   let color;
   this.style.transition = `0.2s ease`;
   if (e.type === "mouseenter" && mouseDown) {
-    switch (mode) {
-      case "random":
-        color = randomRGBColor();
-        this.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
-        break;
-      case "black":
-        this.style.backgroundColor = "black";
-        break;
-      case "colorPick":
-        const colorValue = document.querySelector("#colorPick").value;
-        this.style.backgroundColor = colorValue;
-        break;
+    if (eraseMode) {
+      this.style.backgroundColor = "inherit";
+    } else {
+      switch (mode) {
+        case "random":
+          color = randomRGBColor();
+          this.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+          break;
+        case "black":
+          this.style.backgroundColor = "black";
+          break;
+        case "colorPick":
+          const colorValue = document.querySelector("#colorPick").value;
+          this.style.backgroundColor = colorValue;
+          break;
+      }
     }
   }
 }
@@ -77,6 +83,8 @@ function clearGrid() {
   grid.forEach((box) => {
     box.style.backgroundColor = "inherit";
   });
+  eraseMode = false;
+  btnErase.classList.remove("active");
 }
 
 function checkActive() {
@@ -95,6 +103,9 @@ function checkActive() {
     if (isActive(btnRandom)) btnRandom.classList.remove("active");
     if (isActive(btnBlack)) btnBlack.classList.remove("active");
     mode = "colorPick";
+  } else {
+    btnErase.classList.toggle("active");
+    eraseMode = !eraseMode;
   }
 }
 
@@ -107,6 +118,7 @@ btnRandom.addEventListener("click", checkActive);
 btnBlack.addEventListener("click", checkActive);
 colorPick.addEventListener("click", checkActive);
 // Tools
+btnErase.addEventListener("click", checkActive);
 btnClear.addEventListener("click", clearGrid);
 btnChangeGrid.addEventListener("click", changeGrid);
 window.addEventListener("load", () => {
