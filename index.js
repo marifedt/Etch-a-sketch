@@ -1,11 +1,12 @@
 const container = document.querySelector(".container");
-const btnChangeGrid = document.querySelector("button");
-const slideEraser = document.querySelector('#slideErase');
+const btnClear = document.querySelector("#btnClear");
+const btnChangeGrid = document.querySelector("#sizeChange");
+const slideEraser = document.querySelector("#slideErase");
 let numOfGrids = 16;
 
-slideEraser.addEventListener('input', function() {
+slideEraser.addEventListener("input", function () {
   const value = this.value;
-  this.style.background = `linear-gradient(to right, #161C2E 0%, #161C2E ${value}%, #fff ${value}%, white 100%)`
+  this.style.background = `linear-gradient(to right, #161C2E 0%, #161C2E ${value}%, #fff ${value}%, white 100%)`;
 });
 
 function randomNumber(max) {
@@ -55,5 +56,13 @@ function changeGridColor(e) {
   }
 }
 
+function clearGrid() {
+  const grid = document.querySelectorAll(".box");
+  grid.forEach((box) => {
+    box.style.backgroundColor = "inherit";
+  });
+}
+
+btnClear.addEventListener("click", clearGrid);
 btnChangeGrid.addEventListener("click", changeGrid);
 window.addEventListener("load", createBoxes(16));
