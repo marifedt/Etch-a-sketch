@@ -103,7 +103,7 @@ function checkActive() {
     if (isActive(btnRandom)) btnRandom.classList.remove("active");
     if (isActive(btnBlack)) btnBlack.classList.remove("active");
     mode = "colorPick";
-  } else {
+  } else if (this === btnErase) {
     btnErase.classList.toggle("active");
     eraseMode = !eraseMode;
   }
