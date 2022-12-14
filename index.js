@@ -1,7 +1,6 @@
 const container = document.querySelector(".container");
 const btnClear = document.querySelector("#btnClear");
 const btnChangeGrid = document.querySelector("#sizeChange");
-const slideEraser = document.querySelector("#slideErase");
 const btnRandom = document.querySelector("#btnRandom");
 const btnBlack = document.querySelector("#btnBlack");
 const colorPick = document.querySelector(".cp-container");
@@ -12,11 +11,6 @@ let mode = "random";
 let isActive = (element) => {
   return element.classList.contains("active");
 };
-
-slideEraser.addEventListener("input", function () {
-  const value = this.value;
-  this.style.background = `linear-gradient(to right, #161C2E 0%, #161C2E ${value}%, #fff ${value}%, white 100%)`;
-});
 
 function randomNumber(max) {
   return Math.floor(Math.random() * (max + 1));
