@@ -1,35 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./reset.css">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./style.css" />
     <script src="./index.js" defer></script>
     <title>Etch-a-sketch | The Odin Project</title>
-</head>
-<body>
+  </head>
+  <body>
     <main>
-        <div class="main-canvas-wrapper">
-            <div class="frame-container">
-                <div class="container"></div>
-            </div>
-            <input type="range" value="0" min="0" max="100" step="1" id="slideErase">
+      <div class="main-canvas-wrapper">
+        <div class="frame-container">
+          <div class="container"></div>
         </div>
-        
-        <div class="header-wrapper">
-            <h1>Etch-a-sketch</h1>
+        <input
+          type="range"
+          value="0"
+          min="0"
+          max="100"
+          step="1"
+          id="slideErase"
+        />
+      </div>
+      <div class="header-wrapper">
+        <h1>Etch-a-sketch</h1>
+        <div class="section-wrapper">
+          <section>
+            <h3>Modes</h3>
             <div class="btn-container">
-                <button>Change Size</button>
-                <div class="cp-container">
-                    <input type="color" name="chosenColor"></button>
-                    <label for="chosenColor">Pick a color</label>
-                </div>
-                <button>Random</button>
-                <button>Eraser</button>
+              <button>Random</button>
+              <button>Black</button>
+              <div class="cp-container">
+                <input type="color" name="chosenColor" />
+                <label for="chosenColor">Pick a color</label>
+              </div>
             </div>
+          </section>
+
+          <section>
+            <h3>Tools</h3>
+            <div class="btn-container">
+              <button>Change Size</button>
+              <button>Eraser</button>
+              <button>Clear</button>
+            </div>
+          </section>
         </div>
+      </div>
     </main>
-</body>
+  </body>
 </html>
