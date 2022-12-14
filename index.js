@@ -2,7 +2,9 @@ const container = document.querySelector(".container");
 const btnClear = document.querySelector("#btnClear");
 const btnChangeGrid = document.querySelector("#sizeChange");
 const slideEraser = document.querySelector("#slideErase");
+
 let numOfGrids = 16;
+let mouseDown = false;
 
 slideEraser.addEventListener("input", function () {
   const value = this.value;
@@ -34,6 +36,7 @@ function createBoxes(grid) {
 
   const boxes = document.querySelectorAll(".box");
   boxes.forEach((box) => box.addEventListener("mouseenter", changeGridColor));
+  boxes.forEach((box) => box.addEventListener("mousedown", changeGridColor));
 }
 
 function changeGrid() {
@@ -50,7 +53,7 @@ function changeGrid() {
 
 function changeGridColor(e) {
   this.style.transition = `0.2s ease`;
-  if (e.type === "mouseenter") {
+  if (e.type === "mouseenter" && mouseDown) {
     const color = randomRGBColor();
     this.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
   }
@@ -63,6 +66,12 @@ function clearGrid() {
   });
 }
 
+container.addEventListener("mousedown", () => (mouseDown = true));
+container.addEventListener("mouseup", () => (mouseDown = false));
+container.addEventListener("mouseleave", () => (mouseDown = false));
+
 btnClear.addEventListener("click", clearGrid);
 btnChangeGrid.addEventListener("click", changeGrid);
-window.addEventListener("load", createBoxes(16));
+window.addEventListener("load", () => {
+  createBoxes(16);
+});
