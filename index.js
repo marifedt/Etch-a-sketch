@@ -2,9 +2,16 @@ const container = document.querySelector(".container");
 const btnClear = document.querySelector("#btnClear");
 const btnChangeGrid = document.querySelector("#sizeChange");
 const slideEraser = document.querySelector("#slideErase");
+const btnRandom = document.querySelector("#btnRandom");
+const btnBlack = document.querySelector("#btnBlack");
+const colorPick = document.querySelector(".cp-container");
 
 let numOfGrids = 16;
 let mouseDown = false;
+let mode = "random";
+let isActive = (element) => {
+  return element.classList.contains("active");
+};
 
 slideEraser.addEventListener("input", function () {
   const value = this.value;
@@ -52,10 +59,22 @@ function changeGrid() {
 }
 
 function changeGridColor(e) {
+  let color;
   this.style.transition = `0.2s ease`;
   if (e.type === "mouseenter" && mouseDown) {
-    const color = randomRGBColor();
-    this.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+    switch (mode) {
+      case "random":
+        color = randomRGBColor();
+        this.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+        break;
+      case "black":
+        this.style.backgroundColor = "black";
+        break;
+      case "colorPick":
+        const colorValue = document.querySelector("#colorPick").value;
+        this.style.backgroundColor = colorValue;
+        break;
+    }
   }
 }
 
@@ -66,12 +85,37 @@ function clearGrid() {
   });
 }
 
+function checkActive() {
+  if (this === btnRandom && !isActive(this)) {
+    this.classList.add("active");
+    if (isActive(btnBlack)) btnBlack.classList.remove("active");
+    if (isActive(colorPick)) colorPick.classList.remove("active");
+    mode = "random";
+  } else if (this === btnBlack && !isActive(this)) {
+    this.classList.add("active");
+    if (isActive(btnRandom)) btnRandom.classList.remove("active");
+    if (isActive(colorPick)) colorPick.classList.remove("active");
+    mode = "black";
+  } else if (this === colorPick && !isActive(this)) {
+    this.classList.add("active");
+    if (isActive(btnRandom)) btnRandom.classList.remove("active");
+    if (isActive(btnBlack)) btnBlack.classList.remove("active");
+    mode = "colorPick";
+  }
+}
+
 container.addEventListener("mousedown", () => (mouseDown = true));
 container.addEventListener("mouseup", () => (mouseDown = false));
 container.addEventListener("mouseleave", () => (mouseDown = false));
 
+// Modes
+btnRandom.addEventListener("click", checkActive);
+btnBlack.addEventListener("click", checkActive);
+colorPick.addEventListener("click", checkActive);
+// Tools
 btnClear.addEventListener("click", clearGrid);
 btnChangeGrid.addEventListener("click", changeGrid);
 window.addEventListener("load", () => {
   createBoxes(16);
+  btnRandom.classList.add("active");
 });
