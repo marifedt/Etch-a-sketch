@@ -1,4 +1,3 @@
-# etch-a-sketch-odin
-A project called Etch-a-Sketch for The Odin project
+# Etch-a-sketch
 
 > Created using HTML, CSS, and JavaScript
